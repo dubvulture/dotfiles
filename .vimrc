@@ -17,6 +17,7 @@ call plug#begin('~/.vim/plugged')
     " styling
     Plug 'ConnorHolyday/vim-snazzy'
     Plug 'itchyny/lightline.vim'
+    Plug 'machakann/vim-highlightedyank'
     " utilities
     Plug 'mileszs/ack.vim'
     Plug 'jceb/vim-orgmode'
