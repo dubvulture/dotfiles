@@ -24,8 +24,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-speeddating' " vim-orgmode won't shut up about this missing even if it's not required
     " language highlights
     Plug 'leafgarland/typescript-vim'
-    Plug 'lifepillar/pgsql.vim'
-    Plug 'LnL7/vim-nix'
+    Plug 'cespare/vim-toml'
     " git
     Plug 'tpope/vim-fugitive'
     Plug 'mhinz/vim-signify'
