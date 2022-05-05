@@ -22,7 +22,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'mileszs/ack.vim'
     Plug 'jceb/vim-orgmode'
     Plug 'tpope/vim-speeddating' " vim-orgmode won't shut up about this missing even if it's not required
-    " language highlights
+    " language highlights / utilities
     Plug 'leafgarland/typescript-vim'
     Plug 'cespare/vim-toml'
     " git
@@ -72,6 +72,8 @@ autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype typescriptreact setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype make setlocal ts=4 sw=4 sts=4 noexpandtab
 autocmd Filetype org setlocal ts=4 sw=4 sts=4 noexpandtab
+autocmd Filetype go setlocal ts=4 sw=4 sts=4 noexpandtab
+autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 " Use Ack! as default Ack command (do not jump to first result)
