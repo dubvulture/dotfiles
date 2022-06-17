@@ -151,5 +151,10 @@ function snap-clean()
     snap list --all | awk '/disabled/{print $1, $3}' | while read snapname revision; do     sudo snap remove "$snapname" --revision="$revision"; done
 }
 
+function apt-up()
+{
+    sudo apt update && sudo apt upgrade
+}
+
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go/bin
