@@ -135,11 +135,6 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # npm w/o permissions
 export PATH=$PATH:$HOME/.npm-global/bin
 
-# Nix
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ] ; then
-    . $HOME/.nix-profile/etc/profile.d/nix.sh
-fi # added by Nix installer
-
 # Rust, Cargo
 . "$HOME/.cargo/env"
 
