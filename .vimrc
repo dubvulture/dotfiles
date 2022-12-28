@@ -55,6 +55,12 @@ set shortmess+=c
 " diagnostics appear/become resolved.
 set signcolumn=yes
 
+" Keyboard is fine, but resizing panes with it is a mess, enable mouse thanks
+set mouse=a
+
+" Yank/Paste from/to system clipboard automatically
+set clipboard=unnamedplus
+
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
