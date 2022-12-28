@@ -94,12 +94,15 @@ call plug#begin('~/.vim/plugged')
     Plug 'itchyny/lightline.vim'
     Plug 'machakann/vim-highlightedyank'
     " utilities
+    Plug 'andymass/vim-matchup'
+    Plug 'preservim/nerdtree'
     Plug 'mileszs/ack.vim'
     Plug 'jceb/vim-orgmode'
     Plug 'tpope/vim-speeddating' " vim-orgmode won't shut up about this missing even if it's not required
     " language highlights / utilities
     Plug 'leafgarland/typescript-vim'
     Plug 'cespare/vim-toml'
+    Plug 'peterhoeg/vim-qml'
     " git
     Plug 'tpope/vim-fugitive'
     Plug 'mhinz/vim-signify'
