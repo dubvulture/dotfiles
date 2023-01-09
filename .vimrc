@@ -142,3 +142,13 @@ nnoremap <Leader>a :Ack!<Space>
 
 " set filetypes
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
+" coc extensions
+let g:coc_global_extensions = [
+            \'coc-html',
+            \'coc-css',
+            \'coc-json',
+            \'coc-go',
+            \'coc-cmake',
+            \'coc-clangd',
+            \]
