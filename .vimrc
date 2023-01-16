@@ -111,7 +111,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
-
 syntax on
 set t_Co=256
 colorscheme snazzy
@@ -122,6 +121,10 @@ let g:lightline = {
 
 map <C-K> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 imap <C-K> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
+
+" rustfmt
+let g:rustfmt_autosave = 1
+let g:rustfmt_fail_silently = 0
 
 " I'm not sure that vim-orgmode sets this...
 autocmd BufNewFile,BufRead *.org set filetype=org
