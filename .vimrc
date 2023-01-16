@@ -103,6 +103,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'leafgarland/typescript-vim'
     Plug 'cespare/vim-toml'
     Plug 'peterhoeg/vim-qml'
+    Plug 'rust-lang/rust.vim'
     " git
     Plug 'tpope/vim-fugitive'
     Plug 'mhinz/vim-signify'
@@ -151,4 +152,5 @@ let g:coc_global_extensions = [
             \'coc-go',
             \'coc-cmake',
             \'coc-clangd',
+            \'coc-rust-analyzer',
             \]
