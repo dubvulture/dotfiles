@@ -123,7 +123,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 # User PIP
-export PATH="/home/kalpa-user/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Android
 export ANDROID_HOME=$HOME/Android/Sdk
