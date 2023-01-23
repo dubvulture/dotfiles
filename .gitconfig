@@ -1,0 +1,6 @@
+[user]
+	name = Manuel Rota
+	email = manuel.rota@protonmail.ch
+	signingKey = 1A23038749380E1E
+[commit]
+	gpgSign = true
