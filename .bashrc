@@ -116,11 +116,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-# PYENV
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# Home git configuration
+alias dotcfg='git --git-dir=$HOME/.dotcfg/ --work-tree=$HOME'
 
 # User PIP
 export PATH="$HOME/.local/bin:$PATH"
@@ -137,9 +134,6 @@ export PATH=$PATH:$HOME/.npm-global/bin
 
 # Rust, Cargo
 . "$HOME/.cargo/env"
-
-# Home git configuration
-alias dotcfg='git --git-dir=$HOME/.dotcfg/ --work-tree=$HOME'
 
 function snap-clean()
 {
