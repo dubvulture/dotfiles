@@ -88,8 +88,24 @@ docker-compose-plugin
 sudo usermod -aG docker $USER
 ```
 
+# Steam
+```bash
+sudo dpkg -i steam_latest.db
+sudo apt --fix-broken install # libjavascriptcoregtk-4.1-0 libwebkit2gtk-4.1-0 zenity zenity-common
+```
+```bash
+sudo dpkg --add-architecture i386
+sudo apt update && sudo apt install steam-installer
+```
+
 
 # `/etc/fstab`
 ```
 UUID=55A0ED12241B54D4                       /home/mrota/Data   ntfs          uid=mrota,gid=mrota,umask=0077     0 0 
+```
+
+# Pipewire
+```bash
+systemctl --user --now enable wireplumber
+sudo apt install pipewire libspa-0.2-bluetooth
 ```
