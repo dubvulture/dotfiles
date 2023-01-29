@@ -90,10 +90,6 @@ sudo usermod -aG docker $USER
 
 # Steam
 ```bash
-sudo dpkg -i steam_latest.db
-sudo apt --fix-broken install # libjavascriptcoregtk-4.1-0 libwebkit2gtk-4.1-0 zenity zenity-common
-```
-```bash
 sudo dpkg --add-architecture i386
 sudo apt update && sudo apt install steam-installer
 ```
