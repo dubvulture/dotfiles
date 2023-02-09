@@ -77,7 +77,7 @@ sudo apt install sublime-merge
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
-  bullseye stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  bookwork stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 ## packages
 docker-ce
