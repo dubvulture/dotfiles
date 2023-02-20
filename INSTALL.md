@@ -14,6 +14,7 @@ wget
 htop
 tmux
 vim
+vim-nox
 ca-certificates
 gnupg
 lm-sensors
@@ -24,6 +25,7 @@ silversearcher-ag
 build-essential
 gcc
 clang
+clang-format
 clangd
 cmake
 valgrind
