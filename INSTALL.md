@@ -37,6 +37,7 @@ sqlite3
 # customization
 kde-plasma-desktop
 plasma-nm
+dolphin-plugins
 papirus-icon-theme
 grub-customizer         (https://github.com/vinceliuice/grub2-themes)
 plymouth-theme-*
