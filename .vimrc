@@ -104,6 +104,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'cespare/vim-toml'
     Plug 'peterhoeg/vim-qml'
     Plug 'rust-lang/rust.vim'
+    Plug 'ekalinin/Dockerfile.vim'
     " git
     Plug 'tpope/vim-fugitive'
     Plug 'mhinz/vim-signify'
