@@ -104,6 +104,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'cespare/vim-toml'
     Plug 'peterhoeg/vim-qml'
     Plug 'rust-lang/rust.vim'
+    Plug 'ekalinin/Dockerfile.vim'
     " git
     Plug 'tpope/vim-fugitive'
     Plug 'mhinz/vim-signify'
@@ -119,8 +120,8 @@ let g:lightline = {
 \ 'colorscheme': 'snazzy',
 \ }
 
-map <C-K> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
-imap <C-K> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
+map <C-K> :py3f /usr/share/vim/addons/syntax/clang-format-13.py<cr>
+imap <C-K> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format-13.py<cr>
 
 " rustfmt
 let g:rustfmt_autosave = 1
