@@ -107,7 +107,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'ekalinin/Dockerfile.vim'
     " git
     Plug 'tpope/vim-fugitive'
-    Plug 'mhinz/vim-signify'
+    Plug 'airblade/vim-gitgutter'
     " LSP
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
