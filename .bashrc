@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+HISTSIZE=1000000
+HISTFILESIZE=1000000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -121,6 +121,10 @@ alias dotcfg='git --git-dir=$HOME/.dotcfg/ --work-tree=$HOME'
 
 # User PIP
 export PATH="$HOME/.local/bin:$PATH"
+
+# CUDA
+export PATH="/usr/local/cuda/bin:$PATH"
+export LD_LIBRARY_PATH="/usr/local/cuda/lib:$LD_LIBRARY_PATH"
 
 # Android
 export ANDROID_HOME=$HOME/Android/Sdk
