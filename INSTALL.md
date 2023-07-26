@@ -112,3 +112,28 @@ UUID=55A0ED12241B54D4                       /home/mrota/Data   ntfs          uid
 systemctl --user --now enable wireplumber
 sudo apt install pipewire libspa-0.2-bluetooth
 ```
+
+# AMDGPU
+To enable overclocking and hopefully fix high idle clocks:
+```bash
+printf 'amdgpu.ppfeaturemask=0x%x\n' "$(($(cat /sys/module/amdgpu/parameters/ppfeaturemask) | 0x4000))"
+```
+Put that as a kernel parameter in /etc/default/grub - GRUB_CMD_LINUX_DEFAULT:
+`amdgpu.ppfeaturemask=0xffffffff`
+
+Add file `/etc/X11/xorg.conf.d/20-amdgpu.conf`:
+```
+Section "Screen"
+	Identifier "LG_27"
+	# Fuck Steam
+	# DefaultDepth 30
+	DefaultDepth 24
+EndSection
+
+Section "Device"
+	Identifier "AMD"
+	Driver "amdgpu"
+	Option "TearFree" "true"
+	Option "VariableRefresh" "true"
+EndSection
+```
