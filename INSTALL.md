@@ -19,6 +19,7 @@ ca-certificates
 gnupg
 lm-sensors
 radeontop
+amd64-microcode
 silversearcher-ag
 
 ## development
@@ -28,11 +29,14 @@ clang
 clang-format
 clangd
 cmake
+cmake-curses-gui
 valgrind
 pkg-config
 nodejs
 python-is-python3
+python3-virtualenv
 sqlite3
+minicom
 
 # customization
 kde-plasma-desktop
