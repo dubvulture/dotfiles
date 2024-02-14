@@ -35,6 +35,7 @@ pkg-config
 nodejs
 python-is-python3
 python3-virtualenv
+python3-tk
 sqlite3
 minicom
 
@@ -61,6 +62,7 @@ okular
 gwenview
 kde-spectable
 telegram-desktop
+cmus
 
 ## latex
 latexmk
@@ -137,3 +139,14 @@ Section "Device"
 	Option "VariableRefresh" "true"
 EndSection
 ```
+
+# Kalpa
+
+```
+sudo apt install openvpn strongswan
+```
+
+Modify `/etc/ipsec.secrets`, `/etc/ipsec.conf`, `/etc/hosts`.
+Add entries to `.ssh/config`.
+
+PYENV libreadline-dev liblzma-dev tk-dev libsqlite3-dev
