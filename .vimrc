@@ -1,9 +1,10 @@
 " vimrc
 
-set background=dark
-
 set nocompatible
 filetype off
+
+set background=dark
+set termguicolors
 
 " Show airline
 set laststatus=2
@@ -18,14 +19,32 @@ set expandtab
 set number
 "set colorcolumn=100
 
-set termguicolors
+" show custom characters
+set list
+set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
 
+" already handled by statusline
 set noshowmode
+
+" incremental search yay (show match while typing)
+set incsearch
 
 " do not show intro message
 set shortmess+=I
 " show number of matches
 set shortmess-=S
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" reload file automatically if it was not modified by vim
+set autoread
+
+" might be useful, who knows
+set history=1000
+
+" sensible.vim says that this is useful, I want to believe
+set sessionoptions-=options
+set viewoptions-=options
 
 " disable folding (for plugins too)
 " set nofoldenable
@@ -34,9 +53,12 @@ set shortmess-=S
 " TextEdit might fail if hidden is not set.
 set hidden
 
+" start scrolling even if N lines are still visible, tweak me! 
+set scrolloff=5
+
 " Some servers have issues with backup files, see #649.
 set nobackup
-set nowritebackup
+set writebackup
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -44,9 +66,6 @@ set cmdheight=2
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
 set updatetime=300
-
-" Don't pass messages to |ins-completion-menu|.
-set shortmess+=c
 
 " Shut the fuck up please (enable with vim < 8.2)
 " let g:coc_disable_startup_warning = 1
@@ -91,7 +110,7 @@ endif
 call plug#begin('~/.vim/plugged')
     " styling
     Plug 'ConnorHolyday/vim-snazzy'
-    Plug 'itchyny/lightline.vim'
+    Plug 'vim-airline/vim-airline'
     Plug 'machakann/vim-highlightedyank'
     " utilities
     Plug 'andymass/vim-matchup'
@@ -116,12 +135,44 @@ syntax on
 set t_Co=256
 colorscheme snazzy
 
-let g:lightline = {
-\ 'colorscheme': 'snazzy',
-\ }
+" do not load airline shit integrations
+let g:airline_extensions = [
+    \ 'branch',
+    \ 'coc',
+    \ 'tabline',
+\ ]
+" this seems to be working just fine with the autodetection
+"let g:airline_theme='snazzy'
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+" redefine since I don't want fancy arrows
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+" redefine since I don't care about the number of lines
+let g:airline#extensions#coc#stl_format_err = '%C'
+let g:airline#extensions#coc#stl_format_warn = '%C'
+" this can only be modified in this hacky way
+function! CustomAirlineAfterInit()
+    let g:airline_section_z = airline#section#create(['%p%% %L:%v'])
+endfunction
+au User AirlineAfterInit call CustomAirlineAfterInit()
+" alternatively I could configure these
+" let g:airline_symbols.maxlinenr = ' '
+" let g:airline_symbols.linenr = ' '
+" let g:airline_symbols.colnr = ' '
 
 map <C-K> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 imap <C-K> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
+
+" Tab shortcuts. I use shift as a modifier
+map ,t <Esc>:enew<CR>
+map ,T <Esc>:%bd\|e#\|bd#<CR>
+map ,Q <Esc>:bfirst<CR>
+map ,q <Esc>:bprevious<CR>
+map ,e <Esc>:bnext<CR>
+map ,E <Esc>:blast<CR>
 
 " rustfmt
 let g:rustfmt_autosave = 1
