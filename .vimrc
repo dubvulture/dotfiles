@@ -172,12 +172,16 @@ map <C-K> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 imap <C-K> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 
 " Tab shortcuts. I use shift as a modifier
-map ,t <Esc>:enew<CR>
-map ,T <Esc>:%bd\|e#\|bd#<CR>
-map ,Q <Esc>:bfirst<CR>
-map ,q <Esc>:bprevious<CR>
-map ,e <Esc>:bnext<CR>
-map ,E <Esc>:blast<CR>
+noremap ,t <Esc>:enew<CR>
+noremap ,T <Esc>:%bd\|e#\|bd#<CR>
+noremap ,Q <Esc>:bfirst<CR>
+noremap ,q <Esc>:bprevious<CR>
+noremap ,e <Esc>:bnext<CR>
+noremap ,E <Esc>:blast<CR>
+noremap ,w <Esc><C-W>k<CR>
+noremap ,a <Esc><C-W>h<CR>
+noremap ,s <Esc><C-W>j<CR>
+noremap ,d <Esc><C-W>l<CR>
 
 " rustfmt
 let g:rustfmt_autosave = 1
