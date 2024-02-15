@@ -151,6 +151,10 @@ endif
 " redefine since I don't want fancy arrows
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
 " redefine since I don't care about the number of lines
 let g:airline#extensions#coc#stl_format_err = '%C'
 let g:airline#extensions#coc#stl_format_warn = '%C'
