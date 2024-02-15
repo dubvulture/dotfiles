@@ -109,7 +109,7 @@ endif
 " Plugins
 call plug#begin('~/.vim/plugged')
     " styling
-    Plug 'ConnorHolyday/vim-snazzy'
+    Plug 'dubvulture/vim-snazzy'
     Plug 'vim-airline/vim-airline'
     Plug 'machakann/vim-highlightedyank'
     " utilities
@@ -142,8 +142,7 @@ let g:airline_extensions = [
     \ 'coc',
     \ 'tabline',
 \ ]
-" this seems to be working just fine with the autodetection
-"let g:airline_theme='snazzy'
+let g:airline_theme='snazzy'
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -199,6 +198,16 @@ autocmd Filetype make setlocal ts=4 sw=4 sts=4 noexpandtab
 autocmd Filetype org setlocal ts=4 sw=4 sts=4 noexpandtab
 autocmd Filetype go setlocal ts=4 sw=4 sts=4 noexpandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
+
+" Additional matches for C++
+autocmd Filetype cpp syn match cppAttrOpen /\[\[/
+autocmd Filetype cpp syn match cppAttrClose /\]\]/
+autocmd Filetype cpp syn match cppNsDots /\:\:/
+autocmd Filetype cpp syn match doxyTag /@\w\+/ containedin=.*Comment
+autocmd Filetype cpp hi def link cppAttrOpen Structure
+autocmd Filetype cpp hi def link cppAttrClose Structure
+autocmd Filetype cpp hi def link cppNsDots Structure
+autocmd Filetype cpp hi def link doxyTag Exception
 
 let g:ackprg = 'ag --nogroup --nocolor --column'
 " Use Ack! as default Ack command (do not jump to first result)
