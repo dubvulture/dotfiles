@@ -124,6 +124,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'peterhoeg/vim-qml'
     Plug 'rust-lang/rust.vim'
     Plug 'ekalinin/Dockerfile.vim'
+    Plug 'kergoth/vim-bitbake'
     " git
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
@@ -209,3 +210,9 @@ let g:coc_global_extensions = [
             \'coc-clangd',
             \'coc-rust-analyzer',
             \]
+
+" disable CoC by default
+autocmd VimEnter *.cpp exe "CocDisable"
+autocmd VimEnter *.hpp exe "CocDisable"
+autocmd VimEnter *.h exe "CocDisable"
+autocmd VimEnter *.c exe "CocDisable"
