@@ -183,8 +183,8 @@ let g:rustfmt_fail_silently = 0
 autocmd BufNewFile,BufRead *.org set filetype=org
 
 " fuck kalpa
-" autocmd Filetype c setlocal ts=3 sw=3 sts=3 expandtab
-" autocmd Filetype cpp setlocal ts=3 sw=3 sts=3 expandtab
+autocmd Filetype c setlocal ts=3 sw=3 sts=3 expandtab
+autocmd Filetype cpp setlocal ts=3 sw=3 sts=3 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype typescriptreact setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype make setlocal ts=4 sw=4 sts=4 noexpandtab
