@@ -109,7 +109,7 @@ endif
 " Plugins
 call plug#begin('~/.vim/plugged')
     " styling
-    Plug 'ConnorHolyday/vim-snazzy'
+    Plug 'dubvulture/vim-snazzy'
     Plug 'vim-airline/vim-airline'
     Plug 'machakann/vim-highlightedyank'
     " utilities
@@ -141,8 +141,7 @@ let g:airline_extensions = [
     \ 'coc',
     \ 'tabline',
 \ ]
-" this seems to be working just fine with the autodetection
-"let g:airline_theme='snazzy'
+let g:airline_theme='snazzy'
 let g:airline_powerline_fonts = 1
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
