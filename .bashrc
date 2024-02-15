@@ -126,13 +126,6 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/cuda/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/cuda/lib:$LD_LIBRARY_PATH"
 
-# Android
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
-
 # npm w/o permissions
 export PATH=$PATH:$HOME/.npm-global/bin
 
