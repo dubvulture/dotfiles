@@ -150,3 +150,14 @@ Modify `/etc/ipsec.secrets`, `/etc/ipsec.conf`, `/etc/hosts`.
 Add entries to `.ssh/config`.
 
 PYENV libreadline-dev liblzma-dev tk-dev libsqlite3-dev
+
+
+# Veracrypt
+
+[link](https://www.veracrypt.fr/en/Downloads.html)
+- Download `veracrypt-${VERSION}-setup.tar.bz2`
+- Extract `veracrypt-${VERSION}-setup-gui-x64`
+- Run the script and install it
+- Run `/usr/bin/veracrypt-uninstall.sh` to uninstall (do it before upgrading please)
+
+Why not the deb package: it requires gnome shit. Fuck gnome.
