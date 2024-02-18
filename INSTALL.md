@@ -13,8 +13,10 @@ curl
 wget
 htop
 tmux
+xsel                # for clipboard yanking...
 vim
 vim-nox
+vim-gtk3            # for clipboard yanking...
 ca-certificates
 gnupg
 lm-sensors
