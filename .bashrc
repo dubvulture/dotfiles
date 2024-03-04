@@ -142,7 +142,10 @@ function apt-up()
     sudo apt update && sudo apt upgrade
 }
 
-export PATH=$PATH:/usr/local/go/bin
-export PATH=$PATH:$HOME/go/bin
+export GOROOT=$HOME/.go/go
+export GOPATH=$HOME/.go/workspace
+
+export PATH=$PATH:$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
 
 alias tmux="tmux-non-dead.tmux"
