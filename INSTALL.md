@@ -65,6 +65,8 @@ gwenview
 kde-spectable
 telegram-desktop
 cmus
+vlc
+ffmpeg
 
 ## latex
 latexmk
