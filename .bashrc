@@ -138,6 +138,8 @@ function apt-up()
     sudo apt update && sudo apt upgrade
 }
 
+alias ag='ag --pager="less -XFR"'
+
 export GOROOT=$HOME/.go/go
 export GOPATH=$HOME/.go/workspace
 
