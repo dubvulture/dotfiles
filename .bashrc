@@ -16,7 +16,7 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000000
+HISTSIZE=100000
 HISTFILESIZE=1000000
 
 # check the window size after each command and, if necessary,
@@ -141,6 +141,8 @@ function apt-up()
 {
     sudo apt update && sudo apt upgrade
 }
+
+alias ag='ag --pager="less -XFR"'
 
 export GOROOT=$HOME/.go/go
 export GOPATH=$HOME/.go/workspace
