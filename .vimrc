@@ -212,7 +212,9 @@ autocmd Filetype cpp hi def link cppAttrClose Structure
 autocmd Filetype cpp hi def link cppNsDots Structure
 autocmd Filetype *   hi def link doxyTag Exception
 
-let g:ackprg = 'ag --nogroup --nocolor --column'
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
 " Use Ack! as default Ack command (do not jump to first result)
 cnoreabbrev Ack Ack!
 nnoremap <Leader>a :Ack!<Space>
