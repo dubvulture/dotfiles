@@ -168,3 +168,8 @@ PYENV libreadline-dev liblzma-dev tk-dev libsqlite3-dev
 - Run `/usr/bin/veracrypt-uninstall.sh` to uninstall (do it before upgrading please)
 
 Why not the deb package: it requires gnome shit. Fuck gnome.
+
+# Vim
+
+Undodir => `mkdir ~/.vim/undo`
+Remember to clean that up every now and then.
