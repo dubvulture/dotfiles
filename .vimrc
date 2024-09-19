@@ -206,7 +206,7 @@ autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype cpp syn match cppAttrOpen /\[\[/
 autocmd Filetype cpp syn match cppAttrClose /\]\]/
 autocmd Filetype cpp syn match cppNsDots /\:\:/
-autocmd Filetype *   syn match doxyTag /@\w\+/ containedin=.*Comment
+autocmd Filetype *   syn match doxyTag /@\w\+/ containedin=.*Comment,cCommentL
 autocmd Filetype cpp hi def link cppAttrOpen Structure
 autocmd Filetype cpp hi def link cppAttrClose Structure
 autocmd Filetype cpp hi def link cppNsDots Structure
