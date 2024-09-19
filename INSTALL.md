@@ -46,6 +46,7 @@ kde-plasma-desktop
 plasma-nm
 dolphin-plugins
 papirus-icon-theme
+kio-fuse                # for samba access via fuse
 grub-customizer         (https://github.com/vinceliuice/grub2-themes)
 plymouth-theme-*
 plymouth-themes
