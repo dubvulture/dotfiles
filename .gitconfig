@@ -4,3 +4,19 @@
 	signingKey = 1A23038749380E1E
 [commit]
 	gpgSign = true
+
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    line-numbers = true
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokay Extended
+    navigate = true
+
+[color]
+    ui = auto
