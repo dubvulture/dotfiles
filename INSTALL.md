@@ -23,6 +23,7 @@ lm-sensors
 radeontop
 amd64-microcode
 silversearcher-ag
+fzf
 
 ## development
 build-essential
@@ -76,6 +77,18 @@ texlive-luatex
 texlive-latex-extra
 texlive-fonts-recommended
 texlive-fonts-extra
+
+# Cargo Installs
+ripgrep
+fd-find
+bat
+flamegraph
+git-delta
+cargo-expand
+```bash
+cargo install --locked $pkg
+```
+
 
 # Desktop Theme
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/arc-kde/master/install.sh | sh
