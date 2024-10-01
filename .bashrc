@@ -10,7 +10,7 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL="erasedups:ignoreboth"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -26,6 +26,21 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob
+
+# Perform file completion in a case insensitive fashion
+bind "set completion-ignore-case on"
+
+# Treat hyphens and underscores as equivalent
+bind "set completion-map-case on"
+
+# Display matches for ambiguous patterns at first tab press
+bind "set show-all-if-ambiguous on"
+
+# Immediately add a trailing slash when autocompleting symlinks to directories
+bind "set mark-symlinked-directories on"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -148,3 +163,16 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/.pyenv/bin
 
 eval "$(pyenv init -)"
+eval "$(fzf --bash)"
+
+export FZF_DEFAULT_COMMAND="fd --type file --follow"
+export FZF_CTRL_T_COMMAND="fd --type file --follow"
+export FZF_DEFAULT_OPTS="--height 40%"
+export FZF_TMUX=1
+export FZF_TMUX_OPTS="-p 50%,50%"
+
+terminal="$(cat /proc/${PPID}/comm)"
+# start tmux session for konsole
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    (tmux attach -t $terminal || tmux new -s $terminal) > /dev/null 2>&1
+fi
