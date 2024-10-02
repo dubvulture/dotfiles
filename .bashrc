@@ -186,3 +186,9 @@ export FZF_CTRL_T_COMMAND="fd --type file --follow"
 export FZF_DEFAULT_OPTS="--height 40%"
 export FZF_TMUX=1
 export FZF_TMUX_OPTS="-p 50%,50%"
+
+terminal="$(cat /proc/${PPID}/comm)"
+# start tmux session for konsole
+if [ "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    (tmux attach -t $terminal || tmux new -s $terminal) > /dev/null 2>&1
+fi
