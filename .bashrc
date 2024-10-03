@@ -12,6 +12,9 @@ esac
 # See bash(1) for more options
 HISTCONTROL="erasedups:ignoreboth"
 
+# Don't record some commands
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -41,6 +44,11 @@ bind "set show-all-if-ambiguous on"
 
 # Immediately add a trailing slash when autocompleting symlinks to directories
 bind "set mark-symlinked-directories on"
+
+# Correct spelling errors during tab-completion
+shopt -s dirspell 2> /dev/null
+# Correct spelling errors in arguments supplied to cd
+shopt -s cdspell 2> /dev/null
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -173,6 +181,6 @@ export FZF_TMUX_OPTS="-p 50%,50%"
 
 terminal="$(cat /proc/${PPID}/comm)"
 # start tmux session for konsole
-if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+if [ "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
     (tmux attach -t $terminal || tmux new -s $terminal) > /dev/null 2>&1
 fi
