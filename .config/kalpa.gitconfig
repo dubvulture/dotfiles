@@ -1,0 +1,8 @@
+[user]
+    name = Manuel Rota
+    email = manuel.rota@kalpa.it
+    signingkey = 905E35B5E2EFD1EA
+[commit]
+    gpgsign = false
+[core]
+    sshCommand = "ssh -i ~/.ssh/id_github_kalpa"
