@@ -43,7 +43,7 @@ sqlite3
 minicom
 
 # customization
-kde-plasma-desktop
+plasma-desktop
 plasma-nm
 dolphin-plugins
 papirus-icon-theme
@@ -53,9 +53,8 @@ plymouth-theme-*
 plymouth-themes
 kde-config-plymouth
 kde-config-systemd
-qt5-style-kvantum
-qt5-style-kvantum-themes
-plasma-workspace-wayland
+#qt5-style-kvantum
+#qt5-style-kvantum-themes
 pinentry-qt             # for gpg
 arc-theme               # for gtk theming
 ark
@@ -77,6 +76,9 @@ texlive-luatex
 texlive-latex-extra
 texlive-fonts-recommended
 texlive-fonts-extra
+
+## dropbox
+libappindicator3-1
 
 # Cargo Installs
 ripgrep
@@ -164,11 +166,8 @@ EndSection
 # Kalpa
 
 ```
-sudo apt install openvpn strongswan
+sudo apt install openvpn
 ```
-
-Modify `/etc/ipsec.secrets`, `/etc/ipsec.conf`, `/etc/hosts`.
-Add entries to `.ssh/config`.
 
 PYENV libreadline-dev liblzma-dev tk-dev libsqlite3-dev
 

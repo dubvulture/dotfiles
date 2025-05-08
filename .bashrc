@@ -177,7 +177,7 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow"
 export FZF_CTRL_T_COMMAND="fd --type file --follow"
 export FZF_DEFAULT_OPTS="--height 40%"
 export FZF_TMUX=1
-export FZF_TMUX_OPTS="-p 50%,50%"
+export FZF_TMUX_OPTS="-p 70%,70%"
 
 terminal="$(cat /proc/${PPID}/comm)"
 # start tmux session for konsole
