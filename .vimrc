@@ -118,10 +118,11 @@ call plug#begin('~/.vim/plugged')
     " utilities
     Plug 'andymass/vim-matchup'
     Plug 'preservim/nerdtree'
-    Plug 'mileszs/ack.vim'
+    Plug 'dyng/ctrlsf.vim'
     Plug 'jceb/vim-orgmode'
     Plug 'tpope/vim-speeddating' " vim-orgmode won't shut up about this missing even if it's not required
     Plug 'junegunn/fzf'
+    Plug 'junegunn/fzf.vim'
     " language highlights / utilities
     Plug 'leafgarland/typescript-vim'
     Plug 'cespare/vim-toml'
@@ -213,12 +214,16 @@ autocmd Filetype cpp hi def link cppAttrClose Structure
 autocmd Filetype cpp hi def link cppNsDots Structure
 autocmd Filetype *   hi def link doxyTag Exception
 
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
-" Use Ack! as default Ack command (do not jump to first result)
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
+let g:ctrlsf_backend = 'ag'
+" open CtrlSF prompt
+nmap <C-F>f <Plug>CtrlSFPrompt
+" open CtrlSF prompt + selected word
+vmap <C-F>f <Plug>CtrlSFVwordPath
+" open CtrlSF prompt + cursor word
+nmap <C-F>n <Plug>CtrlSFCwordPath
+" toggle CtrlSF pane
+nnoremap <C-F>t :CtrlSFToggle<CR>
+inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
 
 " set filetypes
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
