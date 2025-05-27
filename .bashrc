@@ -168,9 +168,7 @@ export GOPATH=$HOME/.go/workspace
 
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$HOME/.pyenv/bin
 
-eval "$(pyenv init -)"
 eval "$(fzf --bash)"
 
 export FZF_DEFAULT_COMMAND="fd --type file --follow"
