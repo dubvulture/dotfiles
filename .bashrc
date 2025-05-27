@@ -173,9 +173,6 @@ export GOPATH=$HOME/.go/workspace
 export PATH=$PATH:$GOROOT/bin
 export PATH=$PATH:$GOPATH/bin
 
-export PATH=$PATH:$HOME/.pyenv/bin
-eval "$(pyenv init -)"
-
 alias tmux="tmux-non-dead.tmux"
 
 export PATH=$PATH:$HOME/.fzf/bin
@@ -185,7 +182,8 @@ export FZF_DEFAULT_COMMAND="fd --type file --follow"
 export FZF_CTRL_T_COMMAND="fd --type file --follow"
 export FZF_DEFAULT_OPTS="--height 40%"
 export FZF_TMUX=1
-export FZF_TMUX_OPTS="-p 50%,50%"
+export FZF_TMUX_OPTS="-p 70%,70%"
+alias fzfvim="fzf --bind 'enter:become(vim {})'"
 
 terminal="$(cat /proc/${PPID}/comm)"
 # start tmux session for konsole

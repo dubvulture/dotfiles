@@ -6,6 +6,14 @@ filetype off
 set background=dark
 set termguicolors
 
+" You might have to force true color when using regular vim inside tmux as the
+" colorscheme can appear to be grayscale with "termguicolors" option
+" enabled.
+if !has('gui_running') && &term =~ '^\%(screen\|tmux\)'
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
 " Show airline
 set laststatus=2
 
@@ -118,7 +126,6 @@ call plug#begin('~/.vim/plugged')
     " utilities
     Plug 'andymass/vim-matchup'
     Plug 'preservim/nerdtree'
-    Plug 'mileszs/ack.vim'
     Plug 'jceb/vim-orgmode'
     Plug 'tpope/vim-speeddating' " vim-orgmode won't shut up about this missing even if it's not required
     " language highlights / utilities
@@ -212,13 +219,6 @@ autocmd Filetype cpp hi def link cppAttrOpen Structure
 autocmd Filetype cpp hi def link cppAttrClose Structure
 autocmd Filetype cpp hi def link cppNsDots Structure
 autocmd Filetype *   hi def link doxyTag Exception
-
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
-" Use Ack! as default Ack command (do not jump to first result)
-cnoreabbrev Ack Ack!
-nnoremap <Leader>a :Ack!<Space>
 
 " set filetypes
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
