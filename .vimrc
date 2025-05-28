@@ -131,6 +131,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-speeddating' " vim-orgmode won't shut up about this missing even if it's not required
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
+    Plug 'tpope/vim-commentary'
     " language highlights / utilities
     Plug 'leafgarland/typescript-vim'
     Plug 'cespare/vim-toml'
@@ -179,9 +180,6 @@ au User AirlineAfterInit call CustomAirlineAfterInit()
 " let g:airline_symbols.maxlinenr = ' '
 " let g:airline_symbols.linenr = ' '
 " let g:airline_symbols.colnr = ' '
-
-map <C-K> :py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
-imap <C-K> <c-o>:py3f /usr/share/vim/addons/syntax/clang-format.py<cr>
 
 " Tab shortcuts. I use shift as a modifier
 noremap ,t <Esc>:enew<CR>
@@ -245,6 +243,7 @@ let g:coc_global_extensions = [
             \'coc-cmake',
             \'coc-clangd',
             \'coc-rust-analyzer',
+            \'coc-sh',
             \]
 
 " Default fzf layout
