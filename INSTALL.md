@@ -64,10 +64,12 @@ qbittorent
 okular
 gwenview
 kde-spectable
-telegram-desktop
 cmus
 vlc
 ffmpeg
+flatpak
+plasma-discover-backend-flatpak
+
 
 ## latex
 latexmk
@@ -91,6 +93,11 @@ cargo-expand
 cargo install --locked $pkg
 ```
 
+# Flatpak Installs
+```bash
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub org.telegram.desktop
+```
 
 # Desktop Theme
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/arc-kde/master/install.sh | sh

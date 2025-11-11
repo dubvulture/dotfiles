@@ -86,7 +86,7 @@ set signcolumn=yes
 set mouse=a
 
 " Yank/Paste from/to system clipboard automatically
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 set undofile
 set undodir=~/.vim/undo/
@@ -123,6 +123,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'dubvulture/vim-snazzy'
     Plug 'vim-airline/vim-airline'
     Plug 'machakann/vim-highlightedyank'
+    Plug 'blueyed/vim-diminactive'
     " utilities
     Plug 'andymass/vim-matchup'
     Plug 'preservim/nerdtree'
@@ -143,6 +144,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'airblade/vim-gitgutter'
     " LSP
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " keep this as last
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'bryanmylee/vim-colorscheme-icons'
 call plug#end()
 
 syntax on
@@ -193,6 +197,8 @@ noremap ,a <Esc><C-W>h<CR>
 noremap ,s <Esc><C-W>j<CR>
 noremap ,d <Esc><C-W>l<CR>
 
+noremap ,<Space> :NERDTreeToggle<CR>
+
 " rustfmt
 let g:rustfmt_autosave = 1
 let g:rustfmt_fail_silently = 0
@@ -220,7 +226,19 @@ autocmd Filetype cpp hi def link cppAttrClose Structure
 autocmd Filetype cpp hi def link cppNsDots Structure
 autocmd Filetype *   hi def link doxyTag Exception
 
+let g:NERDTreeWinSize = 50
+
 let g:ctrlsf_backend = 'ag'
+let g:ctrlsf_auto_preview = 1
+let g:ctrlsf_default_view_mode = 'normal'
+let g:ctrlsf_winsize = '20%'
+let g:ctrlsf_auto_focus = {
+    \ "at": "start"
+    \ }
+let g:ctrlsf_auto_close = {
+    \ "normal": 0,
+    \ "compact": 0
+    \ }
 " open CtrlSF prompt
 nmap <C-F>f <Plug>CtrlSFPrompt
 " open CtrlSF prompt + selected word
@@ -246,9 +264,15 @@ let g:coc_global_extensions = [
             \'coc-sh',
             \]
 
+" disable CoC by default
+autocmd VimEnter *.cpp exe "CocDisable"
+autocmd VimEnter *.hpp exe "CocDisable"
+autocmd VimEnter *.h exe "CocDisable"
+autocmd VimEnter *.c exe "CocDisable"
+
 " Default fzf layout
 " - Popup window (center of the screen)
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.4 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " Customize fzf colors to match your color scheme
 " - fzf#wrap translates this to a set of `--color` options
@@ -266,3 +290,8 @@ let g:fzf_colors =
   \ 'marker':  ['fg', 'Keyword'],
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
+
+" DimInactive custom color
+hi ColorColumn ctermbg=0 guibg=#252630
+let g:diminactive_use_colorcolumn = 1
+let g:diminactive_enable_focus = 1
