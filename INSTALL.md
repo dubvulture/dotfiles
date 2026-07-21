@@ -9,6 +9,7 @@ reboot
 
 ## utilities
 git
+git-lfs
 curl
 wget
 htop
