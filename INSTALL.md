@@ -103,9 +103,6 @@ flatpak install flathub org.telegram.desktop
 # Desktop Theme
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/arc-kde/master/install.sh | sh
 
-# PyEnv
-git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-
 # Sublime Merge
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
 sudo apt install apt-transport-https
@@ -170,15 +167,6 @@ Section "Device"
 	Option "VariableRefresh" "true"
 EndSection
 ```
-
-# Kalpa
-
-```
-sudo apt install openvpn
-```
-
-PYENV libreadline-dev liblzma-dev tk-dev libsqlite3-dev
-
 
 # Veracrypt
 
