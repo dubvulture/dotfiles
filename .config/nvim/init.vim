@@ -119,19 +119,12 @@ call plug#begin('~/.vim/plugged')
     " utilities
     Plug 'andymass/vim-matchup'
     Plug 'preservim/nerdtree'
-    Plug 'dyng/ctrlsf.vim'
     Plug 'jceb/vim-orgmode'
     Plug 'tpope/vim-speeddating' " vim-orgmode won't shut up about this missing even if it's not required
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-commentary'
     Plug 'kshenoy/vim-signature'
-    " language highlights / utilities
-    Plug 'leafgarland/typescript-vim'
-    Plug 'cespare/vim-toml'
-    Plug 'peterhoeg/vim-qml'
-    Plug 'rust-lang/rust.vim'
-    Plug 'ekalinin/Dockerfile.vim'
     " git
     Plug 'tpope/vim-fugitive'
     Plug 'airblade/vim-gitgutter'
@@ -196,6 +189,8 @@ noremap ,<Space> :NERDTreeToggle<CR>
 let g:rustfmt_autosave = 1
 let g:rustfmt_fail_silently = 0
 
+" set filetypes
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 " I'm not sure that vim-orgmode sets this...
 autocmd BufNewFile,BufRead *.org set filetype=org
 
@@ -220,30 +215,6 @@ autocmd Filetype cpp hi def link cppNsDots Structure
 autocmd Filetype *   hi def link doxyTag Exception
 
 let g:NERDTreeWinSize = 50
-
-let g:ctrlsf_backend = 'rg'
-let g:ctrlsf_auto_preview = 1
-let g:ctrlsf_default_view_mode = 'normal'
-let g:ctrlsf_winsize = '20%'
-let g:ctrlsf_auto_focus = {
-    \ "at": "start"
-    \ }
-let g:ctrlsf_auto_close = {
-    \ "normal": 0,
-    \ "compact": 0
-    \ }
-" open CtrlSF prompt
-nmap <C-F>f <Plug>CtrlSFPrompt
-" open CtrlSF prompt + selected word
-vmap <C-F>f <Plug>CtrlSFVwordPath
-" open CtrlSF prompt + cursor word
-nmap <C-F>n <Plug>CtrlSFCwordPath
-" toggle CtrlSF pane
-nnoremap <C-F>t :CtrlSFToggle<CR>
-inoremap <C-F>t <Esc>:CtrlSFToggle<CR>
-
-" set filetypes
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 " coc extensions
 let g:coc_global_extensions = [
