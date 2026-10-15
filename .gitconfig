@@ -1,11 +1,15 @@
 [user]
-	name = Manuel Rota
-	email = manuel.rota@protonmail.ch
-	signingKey = 1A23038749380E1E
+    name = Manuel Rota
+    email = manuel.rota@protonmail.ch
+    signingKey = 1A23038749380E1E
 [commit]
-	gpgSign = true
+    gpgSign = true
+
+[push]
+    autoSetupRemote = true
 
 [core]
+    editor = nvim
     pager = delta
 
 [interactive]

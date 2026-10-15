@@ -57,30 +57,8 @@ set viewoptions-=options
 " disable folding (for plugins too)
 " set nofoldenable
 
-" from coc-nvim example
-" TextEdit might fail if hidden is not set.
-set hidden
-
 " start scrolling even if N lines are still visible, tweak me! 
 set scrolloff=5
-
-" Some servers have issues with backup files, see #649.
-set nobackup
-set writebackup
-
-" Give more space for displaying messages.
-set cmdheight=2
-
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-set updatetime=300
-
-" Shut the fuck up please (enable with vim < 8.2)
-" let g:coc_disable_startup_warning = 1
-
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-set signcolumn=yes
 
 " Keyboard is fine, but resizing panes with it is a mess, enable mouse thanks
 set mouse=a
@@ -90,27 +68,34 @@ set clipboard+=unnamedplus
 
 set undofile
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-inoremap <silent><expr> <S-TAB>
-      \ coc#pum#visible() ? coc#pum#next(1):
-      \ CheckBackspace() ? "\<S-Tab>" :
-      \ coc#refresh()
-" inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
+" Coc suggested options
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+" Give more space for displaying messages.
+set cmdheight=2
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+" Show coc.nvim status, including extension installation progress
+set statusline^=%{coc#status()}
 function! CheckBackspace() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+  return !col || getline('.')[col - 1] =~# '\s'
 endfunction
+" Trigger completion with Tab and navigate the completion menu
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Plugins
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
     " styling
     Plug 'dubvulture/vim-snazzy'
     Plug 'vim-airline/vim-airline'
@@ -119,8 +104,6 @@ call plug#begin('~/.vim/plugged')
     " utilities
     Plug 'andymass/vim-matchup'
     Plug 'preservim/nerdtree'
-    Plug 'jceb/vim-orgmode'
-    Plug 'tpope/vim-speeddating' " vim-orgmode won't shut up about this missing even if it's not required
     Plug 'junegunn/fzf'
     Plug 'junegunn/fzf.vim'
     Plug 'tpope/vim-commentary'
@@ -135,9 +118,23 @@ call plug#begin('~/.vim/plugged')
     Plug 'bryanmylee/vim-colorscheme-icons'
 call plug#end()
 
+
 syntax on
 set t_Co=256
 colorscheme snazzy
+
+" coc extensions
+let g:coc_global_extensions = [
+            \'coc-html',
+            \'coc-css',
+            \'coc-json',
+            \'coc-go',
+            \'coc-cmake',
+            \'coc-clangd',
+            \'coc-rust-analyzer',
+            \'coc-sh',
+            \'@yaegassy/coc-ty',
+            \]
 
 " do not load airline shit integrations
 let g:airline_extensions = [
@@ -191,16 +188,10 @@ let g:rustfmt_fail_silently = 0
 
 " set filetypes
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
-" I'm not sure that vim-orgmode sets this...
-autocmd BufNewFile,BufRead *.org set filetype=org
 
-" fuck kalpa
-" autocmd Filetype c setlocal ts=3 sw=3 sts=3 expandtab
-" autocmd Filetype cpp setlocal ts=3 sw=3 sts=3 expandtab
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype typescriptreact setlocal ts=2 sw=2 sts=2 expandtab
 autocmd Filetype make setlocal ts=4 sw=4 sts=4 noexpandtab
-autocmd Filetype org setlocal ts=4 sw=4 sts=4 noexpandtab
 autocmd Filetype go setlocal ts=4 sw=4 sts=4 noexpandtab
 autocmd Filetype yaml setlocal ts=2 sw=2 sts=2 expandtab
 
@@ -216,23 +207,16 @@ autocmd Filetype *   hi def link doxyTag Exception
 
 let g:NERDTreeWinSize = 50
 
-" coc extensions
-let g:coc_global_extensions = [
-            \'coc-html',
-            \'coc-css',
-            \'coc-json',
-            \'coc-go',
-            \'coc-cmake',
-            \'coc-clangd',
-            \'coc-rust-analyzer',
-            \'coc-sh',
-            \]
-
-" disable CoC by default
-autocmd VimEnter *.cpp exe "CocDisable"
-autocmd VimEnter *.hpp exe "CocDisable"
-autocmd VimEnter *.h exe "CocDisable"
-autocmd VimEnter *.c exe "CocDisable"
+" Coc Diagnostics and code navigation
+"nmap <silent> [g <Plug>(coc-diagnostic-prev)
+"nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-declaration)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gr <Plug>(coc-references)
+nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>fmt <Plug>(coc-format)
+nmap <leader>ref <Plug>(coc-refactor)
 
 " ag/rg current word
 nnoremap <silent><Leader>ag :Ag <C-R><C-W><CR>
@@ -240,7 +224,7 @@ nnoremap <silent><Leader>rg :Rg <C-R><C-W><CR>
 
 " Default fzf layout
 " - Popup window (center of the screen)
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 
 " Customize fzf colors to match your color scheme
 " - fzf#wrap translates this to a set of `--color` options
@@ -263,3 +247,5 @@ let g:fzf_colors =
 hi ColorColumn ctermbg=0 guibg=#252630
 let g:diminactive_use_colorcolumn = 1
 let g:diminactive_enable_focus = 1
+
+lua require('init')

@@ -1,0 +1,10 @@
+{
+  "diagnostic.virtualText": true,
+  "diagnostic.virtualTextCurrentLineOnly": false,
+  "list.previewSplitRight": true,
+  "suggest.noselect": true,
+  "json.schemaDownload.trustedDomains": {
+    "https://raw.githubusercontent.com": true,
+    "https://www.schemastore.org": true
+  }
+}
