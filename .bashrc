@@ -162,6 +162,23 @@ function apt-up()
 }
 
 alias ag='ag --pager="less -XFR"'
+rfz() {
+    RELOAD='reload:rg --column --color=always --smart-case {q} || :'
+    OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
+                nvim {1} +{2}     # No selection. Open the current line in Vim.
+            else
+                nvim +cw -q {+f}  # Build quickfix list for the selected items.
+            fi'
+    fzf --disabled --ansi --multi \
+        --bind "start:$RELOAD" --bind "change:$RELOAD" \
+        --bind "enter:become:$OPENER" \
+        --bind "ctrl-o:execute:$OPENER" \
+        --bind 'ctrl-/:toggle-preview' \
+        --delimiter : \
+        --preview 'bat --color=always --highlight-line {2} {1}' \
+        --preview-window '~4,+{2}+4/3,<80(up)' \
+        --query "$*"
+}
 
 export GOROOT=$HOME/.go/go
 export GOPATH=$HOME/.go/workspace
@@ -173,7 +190,7 @@ eval "$(fzf --bash)"
 
 export FZF_DEFAULT_COMMAND="fd --type file --follow"
 export FZF_CTRL_T_COMMAND="fd --type file --follow"
-export FZF_DEFAULT_OPTS="--height 40%"
+export FZF_DEFAULT_OPTS=""
 export FZF_TMUX=1
 export FZF_TMUX_OPTS="-p 70%,70%"
 alias fvf="fzf --bind 'enter:become(vim {})'"
