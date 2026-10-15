@@ -13,7 +13,7 @@ esac
 HISTCONTROL="erasedups:ignoreboth"
 
 # Don't record some commands
-export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
+HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history:clear"
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -108,7 +108,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -142,23 +142,8 @@ fi
 # Home git configuration
 alias dotcfg='git --git-dir=$HOME/.dotcfg/ --work-tree=$HOME'
 
-# User PIP
-export PATH="$HOME/.local/bin:$PATH"
-
-# CUDA
-export PATH="/usr/local/cuda/bin:$PATH"
-export LD_LIBRARY_PATH="/usr/local/cuda/lib:$LD_LIBRARY_PATH"
-
-# npm w/o permissions
-export PATH=$PATH:$HOME/.npm-global/bin
-
-# Rust, Cargo
 . "$HOME/.cargo/env"
-
-function snap-clean()
-{
-    snap list --all | awk '/disabled/{print $1, $3}' | while read snapname revision; do     sudo snap remove "$snapname" --revision="$revision"; done
-}
+. "$HOME/.fzf.bash"
 
 function apt-up()
 {
@@ -167,26 +152,30 @@ function apt-up()
 
 alias ag='ag --pager="less -XFR"'
 
-export GOROOT=$HOME/.go/go
-export GOPATH=$HOME/.go/workspace
-
-export PATH=$PATH:$GOROOT/bin
-export PATH=$PATH:$GOPATH/bin
-
-alias tmux="tmux-non-dead.tmux"
-
-export PATH=$PATH:$HOME/.fzf/bin
-eval "$(fzf --bash)"
+# rg + fzf + bat
+rfv() {
+    RELOAD='reload:rg --column --color=always --smart-case {q} || :'
+    OPENER='if [[ $FZF_SELECT_COUNT -eq 0 ]]; then
+                nvim {1} +{2}     # No selection. Open the current line in Neovim.
+            else
+                nvim +cw -q {+f}  # Build quickfix list for the selected items.
+            fi'
+    fzf --disabled --ansi --multi \
+        --bind "start:$RELOAD" --bind "change:$RELOAD" \
+        --bind "enter:become:$OPENER" \
+        --bind "ctrl-o:execute:$OPENER" \
+        --bind 'ctrl-/:toggle-preview' \
+        --delimiter : \
+        --preview 'bat --color=always --highlight-line {2} {1}' \
+        --preview-window '~4,+{2}+4/3,<80(up)' \
+        --query "$*"
+}
 
 export FZF_DEFAULT_COMMAND="fd --type file --follow"
 export FZF_CTRL_T_COMMAND="fd --type file --follow"
-export FZF_DEFAULT_OPTS="--height 40%"
+export FZF_DEFAULT_OPTS=""
 export FZF_TMUX=1
 export FZF_TMUX_OPTS="-p 70%,70%"
-alias fvf="fzf --bind 'enter:become(vim {})'"
+alias fvf="fzf --bind 'enter:become(nvim {})'"
 
-terminal="$(cat /proc/${PPID}/comm)"
-# start tmux session for konsole
-if [ "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-    (tmux attach -t $terminal || tmux new -s $terminal) > /dev/null 2>&1
-fi
+eval "$(starship init bash)"

@@ -1,0 +1,32 @@
+[user]
+    name = Manuel Rota
+    email = manuel.rota@aresys.it
+    signingKey = 39BAD70184F430CD
+
+[commit]
+    gpgSign = true
+
+[push]
+    autoSetupRemote = true
+
+[core]
+    editor = nvim
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
+[delta]
+    line-numbers = true
+    plus-style = "syntax #012800"
+    minus-style = "syntax #340001"
+    syntax-theme = Monokai Extended
+    navigate = true
+
+[color]
+    ui = auto
+
+[alias]
+    l = log
+    s = status
+    d = diff
