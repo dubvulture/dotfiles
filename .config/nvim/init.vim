@@ -64,9 +64,15 @@ set scrolloff=5
 set mouse=a
 
 " Yank/Paste from/to system clipboard automatically
+let g:clipboard = 'xsel'
 set clipboard+=unnamedplus
 
 set undofile
+
+" unneeded providers
+let g:loaded_node_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_ruby_provider = 0
 
 " Coc suggested options
 " Some servers have issues with backup files, see #649.
@@ -134,6 +140,7 @@ let g:coc_global_extensions = [
             \'coc-rust-analyzer',
             \'coc-sh',
             \'@yaegassy/coc-ty',
+            \'@yaegassy/coc-ruff',
             \]
 
 " do not load airline shit integrations
